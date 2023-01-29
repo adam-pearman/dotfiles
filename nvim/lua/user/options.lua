@@ -44,6 +44,9 @@ vim.opt.clipboard = 'unnamedplus'
 -- Ask for confirmation instead of erroring.
 vim.opt.confirm = true
 
+-- Keep sign column showing
+vim.opt.signcolumn = 'yes:1'
+
 -- Persistent undo.
 vim.opt.undofile = true
 
