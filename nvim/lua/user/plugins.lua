@@ -26,6 +26,28 @@ local use = require('packer').use
 -- Packer can manage itself.
 use('wbthomason/packer.nvim')
 
+-- One Dark theme.
+use({
+    'jessarcher/onedark.nvim',
+    config = function()
+      vim.cmd('colorscheme onedark')
+
+      -- Hide the characters in FloatBorder.
+      vim.api.nvim_set_hl(0, 'FloatBorder', {
+          fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
+          bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
+      })
+      
+      -- Make the cursor line background invisible.
+      vim.api.nvim_set_hl(0, 'CursorLineBg', {
+          fg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+          bg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+      })
+      
+      vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#30323E' })
+    end,
+  })
+
 -- Commenting support.
 use('tpope/vim-commentary')
 
@@ -119,6 +141,29 @@ use({
   end
 })
 
+-- Fuzzy Finder
+use({
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'kyazdani42/nvim-web-devicons',
+      'nvim-telescope/telescope-live-grep-args.nvim',
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+    },
+    config = function()
+      require('user/plugins/telescope')
+    end,
+})
+
+-- File tree sidebar
+use({
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require('user/plugins/nvim-tree')
+    end,
+})
+
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
@@ -127,7 +172,7 @@ end
 
 vim.cmd([[
   augroup packer_user_config
-    autocmd
+    autocmd!
     autocmd BufWritePost plugins.lua source <afile>
   augroup end
 ]])
