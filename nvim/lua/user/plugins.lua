@@ -28,32 +28,32 @@ use('wbthomason/packer.nvim')
 
 -- One Dark theme
 use({
-    'jessarcher/onedark.nvim',
-    config = function()
-      vim.cmd('colorscheme onedark')
+  'jessarcher/onedark.nvim',
+  config = function()
+    vim.cmd('colorscheme onedark')
 
-      -- Hide the characters in FloatBorder
-      vim.api.nvim_set_hl(0, 'FloatBorder', {
-          fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
-          bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
-      })
-      
-      -- Make the cursor line background invisible
-      vim.api.nvim_set_hl(0, 'CursorLineBg', {
-          fg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
-          bg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+    -- Hide the characters in FloatBorder
+    vim.api.nvim_set_hl(0, 'FloatBorder', {
+        fg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
+        bg = vim.api.nvim_get_hl_by_name('NormalFloat', true).background,
       })
 
-      -- Make the StatusLineNonText background the same as StatusLine
-      vim.api.nvim_set_hl(0, 'StatusLineNonText', {
+    -- Make the cursor line background invisible
+    vim.api.nvim_set_hl(0, 'CursorLineBg', {
+        fg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+        bg = vim.api.nvim_get_hl_by_name('CursorLine', true).background,
+      })
+
+    -- Make the StatusLineNonText background the same as StatusLine
+    vim.api.nvim_set_hl(0, 'StatusLineNonText', {
         fg = vim.api.nvim_get_hl_by_name('NonText', true).foreground,
         bg = vim.api.nvim_get_hl_by_name('StatusLine', true).background,
       })
-      
-      vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#30323E' })
-      vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
-    end,
-  })
+
+    vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#30323E' })
+    vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { fg = '#2F313C' })
+  end,
+})
 
 -- Commenting support
 use('tpope/vim-commentary')
@@ -108,11 +108,11 @@ use({
 
 -- Automatically add closing brackets, quotes, etc
 use({
-  'windwp/nvim-autopairs',
-  config = function()
-    require('nvim-autopairs').setup()
-  end,
-})
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup()
+    end,
+  })
 
 -- Add smooth scrolling to avoid jarring jumps
 use({
@@ -132,11 +132,11 @@ use({
 
 -- Automatically fix indentation when pasting code
 use({
-  'sickill/vim-pasta',
-  config = function()
-    vim.g.pasta_disabled_filetypes = { 'fugitive' }
-  end,
-})
+    'sickill/vim-pasta',
+    config = function()
+      vim.g.pasta_disabled_filetypes = { 'fugitive' }
+    end,
+  })
 
 -- Split arrays and methods onto multiple lines, or join them back up
 use({
@@ -150,52 +150,52 @@ use({
 
 -- Fuzzy Finder
 use({
-    'nvim-telescope/telescope.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'kyazdani42/nvim-web-devicons',
-      'nvim-telescope/telescope-live-grep-args.nvim',
-      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-    },
-    config = function()
-      require('user/plugins/telescope')
-    end,
+  'nvim-telescope/telescope.nvim',
+  requires = {
+    'nvim-lua/plenary.nvim',
+    'kyazdani42/nvim-web-devicons',
+    'nvim-telescope/telescope-live-grep-args.nvim',
+    { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+  },
+  config = function()
+    require('user/plugins/telescope')
+  end,
 })
 
 -- File tree sidebar
 use({
-    'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function()
-      require('user/plugins/nvim-tree')
-    end,
+  'kyazdani42/nvim-tree.lua',
+  requires = 'kyazdani42/nvim-web-devicons',
+  config = function()
+    require('user/plugins/nvim-tree')
+  end,
 })
 
 -- A status line
 use({
-    'nvim-lualine/lualine.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function()
-      require('user/plugins/lualine')
-    end,
+  'nvim-lualine/lualine.nvim',
+  requires = 'kyazdani42/nvim-web-devicons',
+  config = function()
+    require('user/plugins/lualine')
+  end,
 })
 
 -- Display buffers as tabs
 use({
-    'akinsho/bufferline.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
-    after = 'onedark.nvim',
-    config = function()
-      require('user/plugins/bufferline')
-    end,
+  'akinsho/bufferline.nvim',
+  requires = 'kyazdani42/nvim-web-devicons',
+  after = 'onedark.nvim',
+  config = function()
+    require('user/plugins/bufferline')
+  end,
 })
 
 -- Display indentation lines
 use({
-    'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      require('user/plugins/indent-blankline')
-    end,
+  'lukas-reineke/indent-blankline.nvim',
+  config = function()
+    require('user/plugins/indent-blankline')
+  end,
 })
 
 -- Add a dashboard
@@ -210,28 +210,36 @@ use {
 
 -- Git integration
 use({
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-      vim.keymap.set('n', ']h', ':Gitsigns next_hunk<CR>')
-      vim.keymap.set('n', '[h', ':Gitsigns prev_hunk<CR>')
-      vim.keymap.set('n', 'gs', ':Gitsigns stage_hunk<CR>')
-      vim.keymap.set('n', 'gS', ':Gitsigns undo_stage_hunk<CR>')
-      vim.keymap.set('n', 'gp', ':Gitsigns preview_hunk<CR>')
-      vim.keymap.set('n', 'gb', ':Gitsigns blame_line<CR>')
-    end,
+  'lewis6991/gitsigns.nvim',
+  config = function()
+    require('gitsigns').setup()
+    vim.keymap.set('n', ']h', ':Gitsigns next_hunk<CR>')
+    vim.keymap.set('n', '[h', ':Gitsigns prev_hunk<CR>')
+    vim.keymap.set('n', 'gs', ':Gitsigns stage_hunk<CR>')
+    vim.keymap.set('n', 'gS', ':Gitsigns undo_stage_hunk<CR>')
+    vim.keymap.set('n', 'gp', ':Gitsigns preview_hunk<CR>')
+    vim.keymap.set('n', 'gb', ':Gitsigns blame_line<CR>')
+  end,
 })
 
 -- Git commands
 use({
-    'tpope/vim-fugitive',
-    requires = 'tpope/vim-rhubarb',
-  })
+  'tpope/vim-fugitive',
+  requires = 'tpope/vim-rhubarb',
+})
+
+-- Floating terminal
+use({
+  'voldikss/vim-floaterm',
+  config = function()
+    require('user/plugins/floaterm')
+  end,
+})
 
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
-    require('packer').sync()
+  require('packer').sync()
 end
 
 vim.cmd([[
