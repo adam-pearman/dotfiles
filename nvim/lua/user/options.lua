@@ -12,6 +12,7 @@ vim.opt.relativenumber = true
 
 -- Complete the longest common match, and allow tabbing the results to fully complete them.
 vim.opt.wildmode = 'longest:full,full'
+vim.opt.completeopt = 'menuone,longest,preview'
 
 vim.opt.title = true
 

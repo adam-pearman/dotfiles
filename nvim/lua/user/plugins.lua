@@ -257,12 +257,37 @@ use({
   requires = {
    'williamboman/mason.nvim',
    'williamboman/mason-lspconfig.nvim',
+   'b0o/schemastore.nvim',
+   'jose-elias-alvarez/null-ls.nvim',
+   'jayp0521/mason-null-ls.nvim',
   },
   config = function()
     require('user/plugins/lspconfig')
   end,
 })
 
+-- Code Actions
+use({
+  'weilbith/nvim-code-action-menu',
+  cmd = 'CodeActionMenu',
+})
+
+-- Autocompletion
+use({
+  'hrsh7th/nvim-cmp',
+  requires = {
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-nvim-lsp-signature-help',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+    'onsails/lspkind-nvim',
+  },
+  config = function()
+    require('user/plugins/cmp')
+  end,
+})
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if packer_bootstrap then
