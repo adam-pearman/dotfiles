@@ -1,6 +1,6 @@
 -- Setup Mason to automatically install LSP servers
 require('mason').setup()
-require('mason-lspconfig').setup({ automatic_installation = true})
+require('mason-lspconfig').setup({ automatic_installation = true })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -10,7 +10,9 @@ require('lspconfig').intelephense.setup({ capabilities = capabilities })
 -- Vue, JavaScript, TypeScript
 require('lspconfig').volar.setup({
   capabilities = capabilities,
-  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+  -- Enable "Take Over Mode" where volar will provide all JS/TS LSP services
+  -- This drastically improves the responsiveness of diagnostic updates on change
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
 })
 
 -- Tailwind CSS
@@ -30,22 +32,22 @@ require('lspconfig').jsonls.setup({
 require('null-ls').setup({
   sources = {
     require('null-ls').builtins.diagnostics.eslint_d.with({
-        condition = function(utils)
-          return utils.root_has_file({
-            '.eslintrc.js',
-            'src/.eslintrc.js',
-          })
-        end,
-      }),
-    require('null-ls').builtins.diagnostics.trail_space.with({ disable_filetypes = { 'NvimTree' } }),
+      condition = function(utils)
+        return utils.root_has_file({
+          '.eslintrc.js',
+          'src/.eslintrc.js',
+        })
+      end,
+    }),
+    require('null-ls').builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
     require('null-ls').builtins.formatting.eslint_d.with({
-        condition = function(utils)
-          return utils.root_has_file({
-            '.eslintrc.js',
-            'src/.eslintrc.js',
-          })
-        end,
-      }),
+      condition = function(utils)
+        return utils.root_has_file({
+          '.eslintrc.js',
+          'src/.eslintrc.js',
+        })
+      end,
+    }),
     require('null-ls').builtins.formatting.prettierd,
   },
 })
@@ -67,7 +69,7 @@ vim.keymap.set('v', '<leader>ca', ':CodeActionMenu<CR>')
 -- Commands
 vim.api.nvim_create_user_command('Format', vim.lsp.buf.formatting, {})
 
--- Diagnostic Configuration
+-- Diagnostic configuration
 vim.diagnostic.config({
   virtual_text = false,
   float = {
@@ -75,7 +77,7 @@ vim.diagnostic.config({
   }
 })
 
--- Sign Configuration
+-- Sign configuration
 vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
 vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })

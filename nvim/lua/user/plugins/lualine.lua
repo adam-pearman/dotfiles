@@ -22,7 +22,7 @@ require('lualine').setup({
       'branch',
       'diff',
       separator,
-      '" " .. tostring(#vim.tbl_keys(vim.lsp.buf_get_clients()))',
+      '"  " .. tostring(#vim.tbl_keys(vim.lsp.buf_get_clients()))',
       { 'diagnostics', sources = { 'nvim_diagnostic' } },
       separator,
     },
@@ -36,7 +36,7 @@ require('lualine').setup({
     },
     lualine_y = {
       separator,
-      '(vim.bo.expandtab and "␠ " or " ") .. " " .. vim.bo.shiftwidth',
+      '(vim.bo.expandtab and "␠ " or "⇥ ") .. " " .. vim.bo.shiftwidth',
       separator,
     },
     lualine_z = {
