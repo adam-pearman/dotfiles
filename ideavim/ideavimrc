@@ -1,0 +1,30 @@
+""" Map leader to space
+let mapleader = ' '
+
+""" Plugins
+set commentary
+set surround
+
+""" Common settings
+set incsearch
+set number
+set relativenumber
+set ignorecase
+set smartcase
+set scrolloff=8
+set sidescrolloff=8
+set clipboard=unnamedplus
+
+""" Mappings
+vmap < <gv
+vmap > >gv
+nmap q: :q
+vmap p "_dP
+imap ;; <Esc>A;
+imap ,, <Esc>A,
+imap <C-j> <Esc>:move .+1<CR>==gi
+imap <C-k> <Esc>:move .-2<CR>==gi
+nmap <C-j> :move .+1<CR>==
+nmap <C-k> :move .-2<CR>==
+vmap <C-j> :move '>+1<CR>gv=gv
+vmap <C-k> :move '<-2<CR>gv=gv
