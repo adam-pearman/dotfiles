@@ -5,6 +5,12 @@ vim.opt.softtabstop = 4
 
 vim.opt.smartindent = true
 
+vim.opt.foldcolumn = '1'
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+
 vim.opt.wrap = false
 
 vim.opt.number = true

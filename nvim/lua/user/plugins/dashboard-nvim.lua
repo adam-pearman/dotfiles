@@ -16,8 +16,8 @@ require('dashboard').setup({
     center = {
       { icon = '  ', desc = 'New file                       ', action = 'enew' },
       { icon = '  ', key = 'SPC f', desc = 'Find file                 ', action = 'Telescope find_files' },
-      { icon = '  ', key = 'SPC h', desc = 'Recent files              ', action = 'Telescope oldfiles' },
-      { icon = '  ', key = 'SPC g', desc = 'Find Word                 ', action = 'Telescope live_grep' },
+      { icon = '󰋚  ', key = 'SPC h', desc = 'Recent files              ', action = 'Telescope oldfiles' },
+      { icon = '  ', key = 'SPC g', desc = 'Find Word                 ', action = 'Telescope live_grep' },
     },
     footer = { '' },
   },

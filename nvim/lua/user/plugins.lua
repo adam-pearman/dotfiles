@@ -54,6 +54,9 @@ config = function()
 end,
 })
 
+-- Working with variants of a word.
+use('tpope/vim-abolish')
+
 -- Commenting support.
 use('tpope/vim-commentary')
 
@@ -86,6 +89,21 @@ use('nelstrom/vim-visual-star-search')
 
 -- Automatically create parent dirs when saving.
 use('jessarcher/vim-heritage')
+
+-- Better Code Folding
+use({
+'kevinhwang91/nvim-ufo',
+requires = 'kevinhwang91/promise-async',
+})
+
+-- Markdown Preview
+use({ 'toppair/peek.nvim',
+run = 'deno task --quiet build:fast',
+config = function()
+  vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
+  vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
+end,
+})
 
 -- Text objects for HTML attributes.
 use({
@@ -169,6 +187,18 @@ config = function()
   require('user/plugins/nvim-tree')
 end,
 })
+
+-- Allow tree to action lsp file operations
+use {
+  'antosha417/nvim-lsp-file-operations',
+  requires = {
+    { "nvim-lua/plenary.nvim" },
+    { "kyazdani42/nvim-tree.lua" },
+  },
+  config = function()
+    require("lsp-file-operations").setup()
+  end,
+}
 
 -- A Status line.
 use({

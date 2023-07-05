@@ -23,6 +23,7 @@ require('telescope').setup({
         ['<esc>'] = actions.close,
         ['<C-Down>'] = actions.cycle_history_next,
         ['<C-Up>'] = actions.cycle_history_prev,
+        ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
       },
     },
     file_ignore_patterns = { '.git/' },

@@ -4,6 +4,21 @@ require('mason-lspconfig').setup({ automatic_installation = true })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
+
+require('ufo').setup({
+    close_fold_kinds = {'imports'},
+})
+
+-- Emmet
+require('lspconfig').emmet_ls.setup({ capabilities = capabilities })
+
+-- HTML
+require('lspconfig').html.setup({ capabilities = capabilities })
+
 -- PHP
 require('lspconfig').intelephense.setup({ capabilities = capabilities })
 
@@ -36,20 +51,17 @@ require('null-ls').setup({
       condition = function(utils)
         return utils.root_has_file({
           '.eslintrc.js',
+          '.eslintrc.cjs',
           'src/.eslintrc.js',
+          'src/.eslintrc.cjs',
         })
       end,
     }),
+    -- require('null-ls').builtins.diagnostics.phpstan,
     require('null-ls').builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
-    require('null-ls').builtins.formatting.eslint_d.with({
-      condition = function(utils)
-        return utils.root_has_file({
-          '.eslintrc.js',
-          'src/.eslintrc.js',
-        })
-      end,
-    }),
+    require('null-ls').builtins.formatting.eslint_d,
     require('null-ls').builtins.formatting.prettierd,
+    require('null-ls').builtins.formatting.pint,
     require('null-ls').builtins.formatting.phpcsfixer,
   },
   on_attach = function(client, bufnr)
@@ -77,16 +89,24 @@ require('mason-null-ls').setup({ automatic_installation = true })
 vim.keymap.set('n', '<Leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>')
 vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+vim.keymap.set('n', 'gd', ':Telescope lsp_definitions<CR>')
 vim.keymap.set('n', 'gi', ':Telescope lsp_implementations<CR>')
 vim.keymap.set('n', 'gr', ':Telescope lsp_references<CR>')
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 vim.keymap.set('n', '<leader>ca', ':CodeActionMenu<CR>')
 vim.keymap.set('v', '<leader>ca', ':CodeActionMenu<CR>')
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 
 -- Commands
-vim.api.nvim_create_user_command('Format', vim.lsp.buf.formatting, {})
+vim.api.nvim_create_user_command('Format', function ()
+      vim.lsp.buf.format({
+          async = true,
+          bufnr = bufnr,
+        })
+    end,
+    {})
 
 -- Diagnostic configuration
 vim.diagnostic.config({
