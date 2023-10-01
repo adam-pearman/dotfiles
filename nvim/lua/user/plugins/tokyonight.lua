@@ -3,8 +3,9 @@ return {
   lazy = false,
   priority = 1000,
   opts = {
+    style="night",
     on_highlights = function(hl, c)
-      local prompt = "#2d3149"
+      local prompt = "#222533"
 
       -- Spelling
       hl.SpellBad = {
