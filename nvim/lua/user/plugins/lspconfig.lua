@@ -59,9 +59,24 @@ require('null-ls').setup({
     }),
     -- require('null-ls').builtins.diagnostics.phpstan,
     require('null-ls').builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
-    require('null-ls').builtins.formatting.eslint_d,
+    require('null-ls').builtins.formatting.eslint_d.with({
+        condition = function(utils)
+          return utils.root_has_file({
+            '.eslintrc.js',
+            '.eslintrc.cjs',
+            'src/.eslintrc.js',
+            'src/.eslintrc.cjs',
+          })
+        end,
+      }),
     require('null-ls').builtins.formatting.prettierd,
-    require('null-ls').builtins.formatting.pint,
+    require('null-ls').builtins.formatting.pint.with({
+        condition = function(utils)
+          return utils.root_has_file({
+            'src/pint.json',
+          })
+        end,
+      }),
     require('null-ls').builtins.formatting.phpcsfixer,
   },
   on_attach = function(client, bufnr)

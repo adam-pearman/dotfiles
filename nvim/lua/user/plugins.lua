@@ -90,6 +90,18 @@ use('nelstrom/vim-visual-star-search')
 -- Automatically create parent dirs when saving.
 use('jessarcher/vim-heritage')
 
+-- Blade Syntax Highlighting
+use('jwalton512/vim-blade')
+
+-- DiffView
+use({
+  "sindrets/diffview.nvim",
+  config = function()
+    vim.keymap.set('n', '<Leader>dvo', ':DiffviewOpen<CR>')
+    vim.keymap.set('n', '<Leader>dvc', ':DiffviewClose<CR>')
+  end,
+})
+
 -- Better Code Folding
 use({
 'kevinhwang91/nvim-ufo',
