@@ -118,9 +118,6 @@ require("lazy").setup({
   -- Working with variants of a word.
   { 'tpope/vim-abolish' },
 
-  -- Blade Syntax Highlighting
-  { 'jwalton512/vim-blade' },
-
   -- DiffView
   { 'sindrets/diffview.nvim' },
 
