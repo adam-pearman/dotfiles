@@ -27,12 +27,13 @@ vim.keymap.set('i', ',,', '<Esc>A,')
 vim.keymap.set('n', '<Leader>k', ':nohlsearch<CR>')
 
 -- Open the current file in the default program.
-vim.keymap.set('n', '<Leader>x', ':!open %<CR><CR>')
+vim.keymap.set('n', '<Leader>x', ':!open %<CR><CR>') --mac
+-- vim.keymap.set('n', '<Leader>x', ':!xdg-open %<CR><CR>') --linux
 
 -- Move lines up and down.
-vim.keymap.set('i', '<C-j>', '<Esc>:move .+1<CR>==gi')
-vim.keymap.set('i', '<C-k>', '<Esc>:move .-2<CR>==gi')
-vim.keymap.set('n', '<C-j>', ':move .+1<CR>==')
-vim.keymap.set('n', '<C-k>', ':move .-2<CR>==')
-vim.keymap.set('v', '<C-j>', ":move '>+1<CR>gv=gv")
-vim.keymap.set('v', '<C-k>', ":move '<-2<CR>gv=gv")
+-- vim.keymap.set('i', '<C-j>', '<Esc>:move .+1<CR>==gi')
+-- vim.keymap.set('i', '<C-k>', '<Esc>:move .-2<CR>==gi')
+-- vim.keymap.set('n', '<C-j>', ':move .+1<CR>==')
+-- vim.keymap.set('n', '<C-k>', ':move .-2<CR>==')
+vim.keymap.set('v', 'J', ":move '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":move '<-2<CR>gv=gv")
