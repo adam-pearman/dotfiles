@@ -132,4 +132,7 @@ require("lazy").setup({
 
   -- Code Actions
   { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' },
+
+  -- Vim Blade
+  { 'jwalton512/vim-blade' },
 })
