@@ -76,9 +76,6 @@ require("lazy").setup({
   -- A Status line.
   { import = 'user.plugins.lualine' },
 
-  -- Display buffers as tabs.
-  { import = 'user.plugins.bufferline' },
-
   -- Display indentation lines.
   { import = 'user.plugins.indent-blankline' },
 

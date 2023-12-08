@@ -29,6 +29,9 @@ return {
     -- HTML
     require('lspconfig').html.setup({ capabilities = capabilities })
 
+    -- Python
+    require('lspconfig').pyright.setup({ capabilities = capabilities })
+
     -- PHP
     require('lspconfig').intelephense.setup({
       commands = {

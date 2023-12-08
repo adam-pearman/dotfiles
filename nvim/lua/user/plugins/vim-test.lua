@@ -8,6 +8,7 @@ return {
     { '<Leader>tv', ':TestVisit<CR>' },
     { '<Leader>tc', ':TestSuite --coverage<CR>' },
     { '<Leader>tr', ':TestSuite --retry<CR>' },
+    { '<Leader>tp', ':TestSuite --parallel<CR>' },
   },
   config = function()
     vim.cmd([[
@@ -18,7 +19,7 @@ return {
       endfunction
       let g:test#custom_strategies = {'floaterm': function('FloatermStrategy')}
       let g:test#strategy = 'floaterm'
-      let test#php#pest#executable = 'sa test'
+      let test#php#pest#executable = 'sa test --env=testing'
     ]])
   end
 }

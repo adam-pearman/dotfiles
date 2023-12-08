@@ -9,7 +9,7 @@ return {
       ignore = false,
     },
     view = {
-      width = 40,
+      adaptive_size = true,
     },
     renderer = {
       highlight_opened_files = 'name',
