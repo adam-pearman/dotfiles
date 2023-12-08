@@ -36,7 +36,21 @@ return {
     local configs = require('nvim-treesitter.configs')
 
     configs.setup({
-      ensure_installed = 'all',
+      ensure_installed = {
+        "php",
+        "lua",
+        "python",
+        "vue",
+        "typescript",
+        "javascript",
+        "yaml",
+        "sql",
+        "json",
+        "html",
+        "css",
+        "gitignore",
+        "dockerfile",
+      },
       highlight = {
         enable = true,
       },

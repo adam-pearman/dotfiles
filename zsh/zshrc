@@ -1,0 +1,80 @@
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+
+plugins=(
+    git
+    tmux
+)
+
+source $ZSH/oh-my-zsh.sh
+
+#--------------------------------------------------------------------------
+# Configuration
+#--------------------------------------------------------------------------
+
+typeset -U path cdpath fpath
+path=(
+    $HOME/.local/bin
+    $HOME/.composer/vendor/bin
+    $path
+)
+
+export EDITOR=nvim
+export GIT_EDITOR=nvim
+
+#--------------------------------------------------------------------------
+# Aliases
+#--------------------------------------------------------------------------
+
+alias c='clear'
+alias h='history'
+alias x='exit'
+alias ..='cd ..'
+alias .2='cd ../..'
+alias .3='cd ../../..'
+alias ll='ls -lhS' #human-readable sorted
+alias repos='~/repos'
+alias vim='nvim'
+alias pstorm='phpstorm'
+alias python='python3'
+
+#Laravel
+alias a='php artisan'
+alias cfresh='rm -rf vendor/ composer.lock && composer i'
+alias mfs='artisan migrate:fresh --seed'
+alias s='bash vendor/bin/sail'
+alias sa='bash vendor/bin/sail artisan'
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+alias smfs='bash vendor/bin/sail artisan migrate:fresh --seed'
+alias v='php vendor/bin/vapor'
+alias vtc='php vendor/bin/vapor team:current'
+alias vts='php vendor/bin/vapor team:switch'
+
+#Git
+alias ga="git add"
+alias gaa="git add ."
+alias gc="git commit -m"
+alias gp="git push origin HEAD"
+alias gs="git status"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gla="git log --graph --oneline --decorate --all"
+alias gm="git merge"
+alias gco="git checkout"
+alias gcl="git clone"
+alias gb="git branch"
+alias gd="git diff"
+alias gf="git fetch"
+
+#Github
+alias ghd="gh pr create -d -a @me -l enhancement"
+alias ghp="gh pr create -a @me -l enhancement"
+alias ghi="gh issue create -a @me -l enhancement"
+alias ghdb="gh pr create -d -a @me -l bug"
+alias ghpb="gh pr create -a @me -l bug"
+alias ghib="gh issue create -a @me -l bug"
+alias ghco="gh pr checkout"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
