@@ -86,7 +86,7 @@ require("lazy").setup({
   { import = 'user.plugins.gitsigns' },
 
   -- Git commands.
-  { 'tpope/vim-fugitive', dependencies = 'tpope/vim-rhubarb' },
+  { import = 'user.plugins.fugitive' },
 
   -- Improved syntax highlighting
   { import = 'user.plugins.treesitter' },
