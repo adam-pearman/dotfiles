@@ -12,13 +12,7 @@ return {
   },
   config = function()
     vim.cmd([[
-      function! FloatermStrategy(cmd)
-        execute 'silent FloatermSend q'
-        execute 'silent FloatermKill'
-        execute 'FloatermNew! '.a:cmd
-      endfunction
-      let g:test#custom_strategies = {'floaterm': function('FloatermStrategy')}
-      let g:test#strategy = 'floaterm'
+      let g:test#strategy = 'vimux'
       let test#php#pest#executable = 'sa test --env=testing'
     ]])
   end

@@ -55,15 +55,6 @@ return {
         fg = c.bg_highlight,
       }
 
-      -- Floaterm
-      hl.Floaterm = {
-        bg = prompt,
-      }
-      hl.FloatermBorder = {
-        bg = prompt,
-        fg = prompt,
-      }
-
       -- Copilot
       hl.CopilotSuggestion = {
         fg = c.comment,

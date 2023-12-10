@@ -88,9 +88,6 @@ require("lazy").setup({
   -- Git commands.
   { 'tpope/vim-fugitive', dependencies = 'tpope/vim-rhubarb' },
 
-  --- Floating terminal.
-  { import = 'user.plugins.floaterm' },
-
   -- Improved syntax highlighting
   { import = 'user.plugins.treesitter' },
 
@@ -135,4 +132,7 @@ require("lazy").setup({
 
   -- Vim Blade
   { 'jwalton512/vim-blade' },
+
+  -- Vim to Tmux
+  { 'preservim/vimux' },
 })
