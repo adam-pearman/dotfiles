@@ -115,9 +115,6 @@ require("lazy").setup({
   -- Working with variants of a word.
   { 'tpope/vim-abolish' },
 
-  -- DiffView
-  { 'sindrets/diffview.nvim' },
-
   -- Better Code Folding
   { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
 
